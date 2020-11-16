@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "64868289183",
+    "firebase_url": "https://gngfinaldata.firebaseio.com",
+    "project_id": "gngfinaldata",
+    "storage_bucket": "gngfinaldata.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:64868289183:android:f219289d124b2dc264b0aa",
+        "android_client_info": {
+          "package_name": "com.example.mentalhealth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "64868289183-sru0do1ha2uj1phigm5e3n9horgvfrom.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnrAwhLV02Gga03e7sZawRwL7hyFokBAk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "64868289183-sru0do1ha2uj1phigm5e3n9horgvfrom.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
