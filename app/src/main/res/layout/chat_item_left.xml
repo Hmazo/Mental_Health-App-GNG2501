@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+
+    android:id="@+id/parent">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="message"
+        android:id="@+id/edit_message"
+        android:layout_marginLeft="10dp"
+        android:padding="8dp"
+
+        android:textColor="#000"
+        android:background="@drawable/message_left"
+        android:textSize="20dp"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"/>
+</RelativeLayout>

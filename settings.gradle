@@ -1,2 +1,3 @@
+include ':app0'
 include ':app'
 rootProject.name = "mentalhealth"

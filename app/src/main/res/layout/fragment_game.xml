@@ -3,12 +3,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.GameFragment">
+    tools:context=".Fragments.GameFragment"
+    android:background="@drawable/bggame">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="game" />
 
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Games"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:layout_marginTop="15dp"
+            android:textColor="#000"
+            />
+        <androidx.cardview.widget.CardView
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="150dp"
+            android:layout_centerHorizontal="true">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/flappy"
+                android:scaleType="centerCrop"
+                android:id="@+id/gameFlappy"/>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
 </FrameLayout>
