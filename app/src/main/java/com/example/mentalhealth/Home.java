@@ -2,6 +2,7 @@ package com.example.mentalhealth;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -41,6 +42,8 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         tableLayout =findViewById(R.id.tabLayout);
         viewPager= findViewById(R.id.viewPager);
+
+
 
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
 

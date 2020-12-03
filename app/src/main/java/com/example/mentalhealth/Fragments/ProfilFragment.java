@@ -60,10 +60,6 @@ public class ProfilFragment extends Fragment {
         getCurrentUser();
 
 
-
-
-
-
         return view;
     }
 

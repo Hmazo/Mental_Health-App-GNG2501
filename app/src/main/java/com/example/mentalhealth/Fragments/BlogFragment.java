@@ -1,21 +1,40 @@
 package com.example.mentalhealth.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.example.mentalhealth.Adapter_Post;
+import com.example.mentalhealth.AddPost_activity;
+import com.example.mentalhealth.ModelPost;
 import com.example.mentalhealth.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link BlogFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BlogFragment extends Fragment {
+public class BlogFragment extends Fragment  {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -25,6 +44,14 @@ public class BlogFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    //variables
+    Toolbar toolbar_add_post;
+    RecyclerView recyclerView;
+    List<ModelPost> postList;
+    Adapter_Post adapter_post;
+
+
 
     public BlogFragment() {
         // Required empty public constructor
@@ -48,6 +75,8 @@ public class BlogFragment extends Fragment {
         return fragment;
     }
 
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,12 +84,73 @@ public class BlogFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view= inflater.inflate(R.layout.fragment_blog, container, false);
+        //recyclerView and its properties
+        recyclerView = view.findViewById(R.id.postrecycleview);
+        LinearLayoutManager layoutManager= new LinearLayoutManager(getActivity());
+        //show newest post first, for this laod from last
+        layoutManager.setStackFromEnd(true);
+        layoutManager.setReverseLayout(true);
+        //set layout to recycleview
+        recyclerView.setLayoutManager(layoutManager);
+
+        //init post list
+        postList= new ArrayList<>();
+        loadPosts();
+
+
+        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar_add_post);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_blog, container, false);
+        ImageView add_post_btn = (ImageView) view.findViewById(R.id.add_post_btn);
+        add_post_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                    // Launching new Activity on hitting the image
+                    Intent j = new Intent(getActivity().getApplicationContext(), AddPost_activity.class);
+                    startActivity(j);
+                    // End intent
+
+
+            }
+        });
+
+        return view;
     }
+
+    private void loadPosts() {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Posts");
+        //get all data from database
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                postList.clear();
+                for(DataSnapshot ds: snapshot.getChildren()) {
+                    ModelPost modelPost= ds.getValue(ModelPost.class);
+                    postList.add(modelPost);
+                    //adapter
+                    adapter_post = new Adapter_Post(getActivity(), postList);
+                    // set adapter to recycleview
+                    recyclerView.setAdapter(adapter_post);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getActivity(), "erreor", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
+
 }

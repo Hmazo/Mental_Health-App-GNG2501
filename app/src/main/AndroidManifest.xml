@@ -11,6 +11,7 @@
         android:theme="@style/Theme.Mentalhealth">
         <activity android:name=".ChatRoom"></activity>
         <activity android:name=".VisitProfil" />
+        <activity android:name=".AddPost_activity" />
         <activity android:name=".Home" />
         <activity android:name=".Register" />
         <activity android:name=".loginScreen" />
