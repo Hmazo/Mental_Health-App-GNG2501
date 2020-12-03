@@ -27,6 +27,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.example.mentalhealth.Fragments.BlogFragment;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -211,6 +212,9 @@ public class AddPost_activity extends AppCompatActivity {
                                                 descriptionEt.setText("");
                                                 imageIv.setImageURI(null);
                                                 image_rui= null;
+                                                Intent intent2 = new Intent(AddPost_activity.this, BlogFragment.class);
+                                                startActivity(intent2);
+
                                             }
                                         })
                                         .addOnFailureListener(new OnFailureListener() {
@@ -376,6 +380,8 @@ public class AddPost_activity extends AppCompatActivity {
         //get current user
         FirebaseUser user = firebaseAuth.getCurrentUser();
         if (user != null) {
+            email= user.getEmail();
+            uid = user.getUid();
         } else {
             startActivity(new Intent(this, MainActivity.class));
             finish();

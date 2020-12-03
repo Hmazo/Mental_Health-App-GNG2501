@@ -16,7 +16,7 @@ import com.mirkoalicastro.birdgame.BirdGame;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link GameFragment#newInstance} factory method to
+ * Use the  factory method to
  * create an instance of this fragment.
  */
 public class GameFragment extends Fragment {
